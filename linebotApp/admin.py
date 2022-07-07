@@ -7,10 +7,9 @@ from import_export.admin import ImportExportActionModelAdmin
 
 
 class HHAdmin(ImportExportActionModelAdmin):
-    list_display = ('id', 'number', 'price', 'text',)
-    list_filter = ('number', 'price')
-    search_fields = ('number',)
-    ordering = ('id',)
+    list_display = ('id', 'number', 'price', 'Sdate', 'Edate',
+                    'eg_name', 'ch_name', 'Element', 'dose', 'company_name')
+    ordering=('id',)
 
 
 admin.site.register(HH, HHAdmin)
