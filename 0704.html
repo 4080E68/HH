@@ -35,7 +35,7 @@
             <input type="text" class="form-control" id="eng" placeholder="請輸入英文品名">
             <br>
             <label for="formGroupExampleInput">成分</label>
-            <input type="text" class="form-control" id="xx" placeholder="請輸入成分">
+            <input type="text" class="form-control" id="element" placeholder="請輸入成分">
             <br>
             <br>
             <button type="button" class="btn btn-primary btn-lg btn-block" onclick="push()" id="sure">確定</button>
@@ -69,13 +69,14 @@
                     var cname = document.getElementById('cname').value;
                     var ch = document.getElementById('ch').value;
                     var eng = document.getElementById('eng').value;
+                    var element  = document.getElementById('element').value;
 
 
                     var msg = "&&&";  //回傳訊息字串
                     msg = msg + cname + "&";
                     msg = msg + ch + "&";
                     msg = msg + eng+ "&";
-                    msg = msg + xx ;
+                    msg = msg + element ;
 
 
 
