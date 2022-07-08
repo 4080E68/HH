@@ -4,7 +4,7 @@ from linebot.exceptions import InvalidSignatureError, LineBotApiError
 from linebot.models import *
 from django.http import HttpResponse, HttpResponseBadRequest, HttpResponseForbidden
 from django.conf import settings
-from linebotApp import func
+from linebotApp import func, func2
 from django.views.decorators.csrf import csrf_exempt
 # Create your views here.
 
@@ -33,7 +33,7 @@ def callback(request):
                 msg = event.message.text
 
             if msg[:3] == '&&&' and len(msg) > 3:
-                func.manageForm(event, msg)
+                func2.manageForm(event, msg)
             if msg == '@健保查詢':
                 line_bot_api.reply_message(
                     event.reply_token, TextSendMessage(text='https://liff.line.me/1656626380-Z7knz9PR'))
