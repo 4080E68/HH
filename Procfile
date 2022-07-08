@@ -1,1 +1,1 @@
-web: gunicorn urexpenses.wsgi
+web: gunicorn -b 0.0.0.0:${PORT:-8000} linebot_project.wsgi
