@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+
+<head>
+        <link rel="icon" href="icon位置">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="rebots" content="index, follow" />
+        <meta name="description" content="網頁說明文字">
+        <meta name="author" content="作者" />
+        <title>健保查詢</title>
+        <link rel="shortcut icon" href="">
+        <script charset="utf-8" src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="./css/style.css">
+
+</head>
+<body>
+    <div class="container">
+    <br>
+    <div>
+            <h1 style="text-align:center; font-size: 3rem;">查詢健保</h1>
+    </div>
+    <div class="form-group">
+
+            
+            <select class="form-control form-control-lg" id="form">
+                <option value="" disabled selected>請選擇商品名稱</option>
+                <option value="罩敏">罩敏</option>
+                <option value="金罩敏" >金罩敏</option>
+                <option value="賽西施" >賽西施</option>
+                <option value="甘寧" >甘寧</option>
+                <option value="光明頂" >光明頂</option>
+                <option value="頂太豐" >頂太豐</option>
+                <option value="求千尺" >求千尺</option>
+                <option value="千代田" >千代田</option>
+                <option value="曲靈風" >曲靈風</option>
+            </select>
+            </select>
+            
+            
+            <br>
+            <br>
+            <button type="button" class="btn btn-primary btn-lg btn-block" onclick="push()" id="sure">確定</button>
+    </div>
+    </div>
+    <script>
+                    
+
+
+                    // Using a Promise object
+                    liff
+                        .init({
+                            liffId: "1656626380-Z7knz9PR", // Use own liffId
+                        })
+
+                        .then((profile) => {
+                            liff.getProfile();
+                            const userId = profile.userId;
+
+                        })
+                        .catch(() => {
+                            // Error happens during initialization
+                            //console.log(err.code, err.message);
+                        });
+        </script>
+        <script>
+
+
+            function push() {
+
+                    let result = document.getElementById('form').value
+                    console.log(result);
+
+
+                    var msg = "&&&";  //回傳訊息字串
+                    msg = msg + result + "&";
+                    console.log(msg);
+
+
+                    liff.sendMessages([  //推播訊息
+                        {
+                            type: 'text',
+                            text: msg
+                        }
+                    ])
+                        .then(() => {
+                            liff.closeWindow();  //關閉視窗
+                        })
+            }
+    </script>
+
+
+</body>
+
+</html>
