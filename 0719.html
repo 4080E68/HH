@@ -71,23 +71,16 @@
             });
     </script>
     <script>
-
-
-
-
         function push() {
-
             let date = document.getElementById('exampleInputDate').value
             let time = document.getElementById('form').value
             if (date == '' || time == '') {
                 return alert("請選擇日期與時間")
             } else {
-                var msg = "&&&";  //回傳訊息字串
+                var msg = "@預約看診";  //回傳訊息字串
                 msg = msg + date + "&";
                 msg = msg + time + "&";
                 console.log(msg);
-
-
                 liff.sendMessages([  //推播訊息
                     {
                         type: 'text',
