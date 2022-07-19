@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+
+<head>
+    <link rel="icon" href="icon位置">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="rebots" content="index, follow" />
+    <meta name="description" content="網頁說明文字">
+    <meta name="author" content="作者" />
+    <title>預約日期</title>
+    <link rel="shortcut icon" href="">
+    <script charset="utf-8" src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="./jquery-ui-1.12.1/jquery-ui.css">
+    <link rel="stylesheet" href="./css/style.css">
+
+</head>
+
+<body>
+    <div class="container">
+        <br>
+        <div>
+            <h1 style="text-align:center; font-size: 3rem;">預約</h1>
+        </div>
+
+        <div class="form-group">
+            <label for="exampleInputDate">預約日期</label>
+            <input type="date" class="form-control" id="exampleInputDate">
+            <br>
+            <select class="form-control" id="form">
+                <option value="" disabled selected>請選擇預約時段</option>
+            </select>
+            <br>
+            <button type="button" class="btn btn-primary btn-lg btn-block" onclick="push()" id="sure">確定</button>
+        </div>
+    </div>
+
+    <script>
+
+
+
+
+        var select = document.getElementById('form');
+        console.log(select);
+        for (var i = 8; i < 17; i++) {
+            for (let j = 0; j < 60; j++) {
+                if (j % 15 == 0) {
+                    if (j == 0) {
+                        select.options[select.options.length] = new Option(`${i}:${j}0`, `${i}:${j}0`);
+                    } else {
+                        select.options[select.options.length] = new Option(`${i}:${j}`, `${i}:${j}`);
+                    }
+                }
+            }
+        }
+    </script>
+    <script>
+
+
+        // Using a Promise object
+        liff
+            .init({
+                liffId: "1656626380-VRjOArdk", // Use own liffId
+            })
+
+            .then((profile) => {
+                liff.getProfile();
+                const userId = profile.userId;
+
+            })
+            .catch(() => {
+                // Error happens during initialization
+                //console.log(err.code, err.message);
+            });
+    </script>
+    <script>
+
+
+        function push() {
+
+            let result = document.getElementById('form').value
+            console.log(result);
+
+
+            var msg = "&&&";  //回傳訊息字串
+            msg = msg + result + "&";
+            console.log(msg);
+
+
+            liff.sendMessages([  //推播訊息
+                {
+                    type: 'text',
+                    text: msg
+                }
+            ])
+                .then(() => {
+                    liff.closeWindow();  //關閉視窗
+                })
+        }
+    </script>
+
+
+</body>
+
+</html>
